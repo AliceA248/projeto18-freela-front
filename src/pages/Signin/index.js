@@ -167,7 +167,11 @@ const Logo = styled.div`
   font-family: "Arial Black", sans-serif;
   width: 100vw;
   height:80px;
+  position: fixed;
+  top: 0;
+  left: 0;
 `;
+
 
 
 const Button = styled.button`
