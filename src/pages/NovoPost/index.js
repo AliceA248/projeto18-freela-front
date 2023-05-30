@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PostContext } from '../../contexts/post.context'
+import { PostContext } from '../../contexts/post.context';
 import styled from 'styled-components';
 
 function NovoPost() {
@@ -28,8 +28,8 @@ function NovoPost() {
     }
 
     const newPost = {
-      userName: 'YourUsername',
-      userImage: 'assets/img/9gag.svg',
+      userName: 'Voce S2',
+      userImage: 'assets/img/cool.png',
       contentImage: imageUrl,
       likedByImage: 'assets/img/9gag.svg',
       likedByText: '',
@@ -48,116 +48,109 @@ function NovoPost() {
   };
 
   return (
-    <div>
-      <h2>Novo Post</h2>
-      <input
+    <Container>
+      <Logo>ArtStyler</Logo>
+      <Heading>Novo Post</Heading>
+      <Input
         type="text"
         placeholder="URL da imagem"
         value={imageUrl}
         onChange={(e) => setImageUrl(e.target.value)}
       />
-      <textarea
+      <TextArea
         placeholder="Descrição"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-      ></textarea>
-      <button onClick={handleAddPost}>Adicionar Post</button>
-      <button onClick={handleNavigateFeed}>Ir para o Feed</button>
-    </div>
+      ></TextArea>
+      <ButtonContainer>
+          <Button onClick={handleAddPost}>Adicionar Post</Button>
+          <Button onClick={handleNavigateFeed}>Ir para o Feed</Button>
+      </ButtonContainer>
+      
+    </Container>
   );
 }
 
-export default NovoPost;
+
+const Heading = styled.div`
+  font-size: 24px;
+  color: #333;
+  margin-top: 160px;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+`;
 
 
-
-// Estilos e componentes adicionais (se necessário)
-
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const Logo = styled.div`
   background: black;
   color: white;
   padding: 20px;
   text-align: center;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-shadow: 2px 2px #333;
   font-size: 3rem;
   font-family: "Arial Black", sans-serif;
-  width: 100vw;
-  height:80px;
-`;
-
-export const Content = styled.div`
-  gap: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 500px;
-  box-shadow: 0 1px 2px #0003;
-  background-color: white;
-  max-width: 350px;
-  padding: 20px;
-  border-radius: 5px;
-  margin-left:560px;
-  margin-top:80px;
-`;
-
-export const Label = styled.label`
-  font-size: 18px;
-  font-weight: 600;
-  color: #676767;
-`;
-
-export const LabelSignin = styled.label`
-  font-size: 16px;
-  color: #676767;
-`;
-
-export const LabelError = styled.label`
-  font-size: 14px;
-  color: red;
-`;
-
-export const Strong = styled.strong`
-  cursor: pointer;
-
-  a {
-    text-decoration: none;
-    color: #676767;
-  }
-`;
-
-const Container = styled.div`  
-`;
-const Input = styled.input`  
-`;
-
-const ContainerCadastro = styled.div`
-  background-image: ${props => `url(${props.imageUrl})`};
-  height: 700px;
-`;
-
-
-
-const MyButton = styled.button`
-  padding: 16px 20px;
-  outline: none;
-  border: none;
-  border-radius: 5px;
   width: 100%;
-  cursor: pointer;
-  background-color: black;
-  color: white;
-  font-weight: 600;
-  font-size: 16px;
-  max-width: 350px;
-  margin: 3px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
 
-  &:active {
-    transform: scale(0.97);
+`;
+
+
+
+
+const Input = styled.input`
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 16px;
+  margin-top:10px;
+`;
+
+const ButtonContainer = styled.div`
+    display:flex;
+
+
+`;
+
+
+const TextArea = styled.textarea`
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 16px;
+  resize: vertical;
+`;
+
+const Button = styled.button`
+  background-color: darkgray;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left:5px;
+
+  &:hover {
+    background-color: gray;
   }
 `;
 
+export default NovoPost;

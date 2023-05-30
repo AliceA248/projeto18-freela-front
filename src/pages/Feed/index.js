@@ -26,9 +26,9 @@ function NavBar() {
 
   return (
     <NavBarContainer>
-      <Logo>
+      <Logo onClick={handleNavigatePost}>
         Criar Post
-        <ion-icon name="logo-instagram" onClick={handleNavigatePost}></ion-icon>
+        <ion-icon name="paper-plane-outline"></ion-icon>
         <span>ArtStyler</span>
       </Logo>
       <Pesquisa>
@@ -41,9 +41,9 @@ function NavBar() {
           />
         </form>
       </Pesquisa>
-      <div>
+      <div onClick={handleNavigate}>
+        <ion-icon name="person-add-outline"></ion-icon>
         User
-        <ion-icon name="paper-plane-outline" onClick={handleNavigate}></ion-icon>
       </div>
     </NavBarContainer>
   );
@@ -137,8 +137,8 @@ function Posts() {
   const staticPosts = [
     {
       userName: "meowed",
-      userImage: "assets/img/meowed.svg",
-      contentImage: "assets/img/gato-telefone.svg",
+      userImage: "assets/img/usuario1.png",
+      contentImage: "assets/img/post.png",
       likedByImage: "assets/img/respondeai.svg",
       likedByText: "respondeai",
       initialLikesAmount: 101523,
@@ -147,8 +147,8 @@ function Posts() {
     },
     {
       userName: "barked",
-      userImage: "assets/img/barked.svg",
-      contentImage: "assets/img/dog.svg",
+      userImage: "assets/img/usuario2.png",
+      contentImage: "assets/img/post2.png",
       likedByImage: "assets/img/adorable_animals.svg",
       likedByText: "adorable_animals",
       initialLikesAmount: 200541,
@@ -189,54 +189,40 @@ function Posts() {
   );
 }
 
-
-
-
-
-
-
 function SideBar() {
+  const [sugestoes, setSugestoes] = useState([
+    { id: 1, nome: 'bad.vibes.memes', razao: 'Segue você', following: false },
+    { id: 2, nome: 'chibirdart', razao: 'Segue você', following: false },
+    { id: 3, nome: 'razoesparaacreditar', razao: 'Novo no Instagram', following: false },
+    { id: 4, nome: 'adorable_animals', razao: 'Segue você', following: false },
+  ]);
+
+  const handleSeguirClick = (id) => {
+    setSugestoes((prevSugestoes) =>
+      prevSugestoes.map((sugestao) =>
+        sugestao.id === id ? { ...sugestao, following: !sugestao.following } : sugestao
+      )
+    );
+  };
+
   return (
     <SugestoesContainer>
       <Titulo>Confira esses blogs</Titulo>
-      <SugestaoContainer>
-        <img src="assets/img/bad.vibes.memes.svg" alt="User" />
-        <UsuarioSugestao>
-            <div className="nome">bad.vibes.memes</div>
-            <div className="razao">Segue você</div>
-        </UsuarioSugestao>
-        <Seguir>Seguir</Seguir>
-      </SugestaoContainer>
-      <SugestaoContainer>
-        <img src="assets/img/chibirdart.svg" alt="User" />
-        <UsuarioSugestao>  
-            <div className="nome">chibirdart</div>
-            <div className="razao">Segue você</div>
-        </UsuarioSugestao>
-        <Seguir>Seguir</Seguir>
-      </SugestaoContainer>
-      <SugestaoContainer>
-          <img src="assets/img/razoesparaacreditar.svg" alt="User" />
+      {sugestoes.map((sugestao) => (
+        <SugestaoContainer key={sugestao.id}>
+          <img src={`assets/img/${sugestao.nome}.svg`} alt="User" />
           <UsuarioSugestao>
-             <div className="nome">razoesparaacreditar</div>
-             <div className="razao">Novo no Instagram</div>
+            <div className="nome">{sugestao.nome}</div>
+            <div className="razao">{sugestao.razao}</div>
           </UsuarioSugestao>
-          <Seguir>Seguir</Seguir>
-      </SugestaoContainer>
-
-      <SugestaoContainer>
-        <img src="assets/img/adorable_animals.svg" alt="User" />
-        <UsuarioSugestao>
-            <div className="nome">adorable_animals</div>
-            <div className="razao">Segue você</div>
-        </UsuarioSugestao>
-        <Seguir>Seguir</Seguir>
-      </SugestaoContainer>
+          <Seguir following={sugestao.following} onClick={() => handleSeguirClick(sugestao.id)}>
+            {sugestao.following ? 'Seguindo' : 'Seguir'}
+          </Seguir>
+        </SugestaoContainer>
+      ))}
     </SugestoesContainer>
   );
 }
-
-
 
       function App() {
 return (
@@ -270,45 +256,22 @@ const NavBarContainer = styled.div`
 const Logo = styled.div`
       display: flex;
       align-items: center;
-      font-size: 24px;
-      font-weight: bold;
+      justify-content:space-between;
+
+      span {
+        margin-left:50px;
+        font-size: 24px;
+       font-weight: bold;
+      }
       `;
 
-const Nome = styled.div`
-      margin-left: 10px;
-      `;
 
 const Pesquisa = styled.div`
       flex: 1;
-      margin: 0 20px;
+      margin: 0 300px;
+      
       `;
 
-const Input = styled.input`
-      width: 350px;
-      height: 30px;
-      padding: 5px 10px;
-      border-radius: 5px;
-      border: none;
-      outline: none;
-      background-color: lightgray;
-      color: white;
-
-      `;
-
-
-const Icones = styled.div`
-      display: flex;
-      align-items: center;
-      color: white;
-      cursor:pointer;
-
-      ion-icon {
-    &:not(:last-child) {
-        margin-right: 10px;
-        cursor:pointer
-    }
-  }
-      `;
 
 const PostsContainer = styled.div`
       background-color:black;
@@ -331,18 +294,14 @@ const PostContainer = styled.div`
       object-fit: cover;
         }
       `;
-const IconesMobile = styled.div`
-      cursor: pointer;
-      `;
+
 
 const FeedContainer = styled.div`
       display:flex;
       background-color:black;
       `;
 
-const Esquerda = styled.div`
-      /* Estilos para a seção esquerda */
-      `;
+
 
 const Topo = styled.div`
       display:flex;
@@ -378,10 +337,6 @@ const Save = styled.div`
       margin-left:420px;
       `;
 
-
-const Acoes = styled.div`
-      /* Estilos para as ações do post */
-      `;
 
 const Conteudo = styled.div`
       height: 500px; /* Defina a altura desejada */
