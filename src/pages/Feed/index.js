@@ -27,6 +27,7 @@ function NavBar() {
   return (
     <NavBarContainer>
       <Logo>
+        Criar Post
         <ion-icon name="logo-instagram" onClick={handleNavigatePost}></ion-icon>
         <span>ArtStyler</span>
       </Logo>
@@ -41,12 +42,7 @@ function NavBar() {
         </form>
       </Pesquisa>
       <div>
-        <ion-icon name="paper-plane-outline"></ion-icon>
-        <ion-icon name="compass-outline"></ion-icon>
-        <ion-icon name="heart-outline"></ion-icon>
-        <ion-icon name="person-outline"></ion-icon>
-      </div>
-      <div>
+        User
         <ion-icon name="paper-plane-outline" onClick={handleNavigate}></ion-icon>
       </div>
     </NavBarContainer>
@@ -251,11 +247,11 @@ return (
       );
 }
 
-      export default App;
+      export default App; 
 
 
 
-      const NavBarContainer = styled.div`
+const NavBarContainer = styled.div`
       position: fixed;
       top: 0;
       left: 0;
@@ -268,26 +264,26 @@ return (
       height: 50px;
       z-index: 999; /* Adicione um valor alto para a propriedade z-index para garantir que o NavBar esteja sempre no topo */
     `;
-    
 
 
-      const Logo = styled.div`
+
+const Logo = styled.div`
       display: flex;
       align-items: center;
       font-size: 24px;
       font-weight: bold;
       `;
 
-      const Nome = styled.div`
+const Nome = styled.div`
       margin-left: 10px;
       `;
 
-      const Pesquisa = styled.div`
+const Pesquisa = styled.div`
       flex: 1;
       margin: 0 20px;
       `;
 
-      const Input = styled.input`
+const Input = styled.input`
       width: 350px;
       height: 30px;
       padding: 5px 10px;
@@ -300,7 +296,7 @@ return (
       `;
 
 
-      const Icones = styled.div`
+const Icones = styled.div`
       display: flex;
       align-items: center;
       color: white;
@@ -314,7 +310,7 @@ return (
   }
       `;
 
-      const PostsContainer = styled.div`
+const PostsContainer = styled.div`
       background-color:black;
       margin-top:50px;
       display: flex;
@@ -322,7 +318,7 @@ return (
       margin-left:200px;
       
       `;
-      const PostContainer = styled.div`
+const PostContainer = styled.div`
       background-color: #222222;
       width: 600px;
       height: 625px;
@@ -335,20 +331,20 @@ return (
       object-fit: cover;
         }
       `;
-      const IconesMobile = styled.div`
+const IconesMobile = styled.div`
       cursor: pointer;
       `;
 
-      const FeedContainer = styled.div`
+const FeedContainer = styled.div`
       display:flex;
       background-color:black;
       `;
 
-      const Esquerda = styled.div`
+const Esquerda = styled.div`
       /* Estilos para a seção esquerda */
       `;
 
-      const Topo = styled.div`
+const Topo = styled.div`
       display:flex;
       align-items:center;
       color:white;
@@ -357,44 +353,48 @@ return (
     }
       `;
 
-      const Usuario = styled.div`
+const Usuario = styled.div`
       display:flex;
       align-items:center;
       margin-top:10px;
       margin-bottom:10px;
       margin-left:10px;
       justify-content:space-between	;
+      img {
+        width:40px;
+        height:40px;
+      }
 
       `;
 
-      const NameUserPost = styled.div`
+const NameUserPost = styled.div`
       display:flex;
       justify-content:space-between;
       margin-left:10px;
 
       `;
 
-      const Save = styled.div`
+const Save = styled.div`
       margin-left:420px;
       `;
 
 
-      const Acoes = styled.div`
+const Acoes = styled.div`
       /* Estilos para as ações do post */
       `;
 
-      const Conteudo = styled.div`
+const Conteudo = styled.div`
       height: 500px; /* Defina a altura desejada */
       `;
 
 
-      const Fundo = styled.div`
+const Fundo = styled.div`
           position: absolute;
           bottom: 5px;
 
       `;
 
-      const AcoesFundo = styled.div`
+const AcoesFundo = styled.div`
       display:flex;
       margin-top:5px;
       margin-left:15px;
@@ -403,7 +403,7 @@ return (
       `;
 
 
-      const Curtidas = styled.div`
+const Curtidas = styled.div`
       display:flex;
       align-items:center;
       margin-top:10px;
@@ -415,7 +415,7 @@ return (
   }
       `;
 
-      const SugestoesContainer = styled.div`
+const SugestoesContainer = styled.div`
       margin-left:150px;
       width:320px;
       height:420px;
@@ -431,12 +431,12 @@ return (
 
       `;
 
-      const Titulo = styled.div`
+const Titulo = styled.div`
       font-weight: bold;
       margin-bottom: 10px;
       `;
 
-      const SugestaoContainer = styled.div`
+const SugestaoContainer = styled.div`
       display:flex;
       height: 50px; /* Defina a altura desejada */
       img {
@@ -445,11 +445,11 @@ return (
 
       `;
 
-      const UsuarioSugestao = styled.div`
+const UsuarioSugestao = styled.div`
       margin-left:10px;
       `;
 
-      const Seguir = styled.div`
+const Seguir = styled.div`
       color: blue;
       cursor: pointer;
       align-content:center;

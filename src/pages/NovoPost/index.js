@@ -43,6 +43,10 @@ function NovoPost() {
     navigate('/feed');
   };
 
+  const handleNavigateFeed = () => {
+    navigate('/feed');
+  };
+
   return (
     <div>
       <h2>Novo Post</h2>
@@ -58,6 +62,7 @@ function NovoPost() {
         onChange={(e) => setDescription(e.target.value)}
       ></textarea>
       <button onClick={handleAddPost}>Adicionar Post</button>
+      <button onClick={handleNavigateFeed}>Ir para o Feed</button>
     </div>
   );
 }

@@ -160,8 +160,6 @@ export default Signup;
 
 
 
-
-
 const Logo = styled.div`
   background: black;
   color: white;

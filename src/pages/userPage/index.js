@@ -1,10 +1,17 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const UserPage = () => {
   const location = useLocation();
   const { nome, email, fotoPerfil, biografia } = location.state;
+  const navigate = useNavigate();
+
+
+  const handleNavigatePaginaInicial = () => {
+    navigate("/feed");
+  };
+
 
   return (
     <div>
@@ -15,6 +22,7 @@ const UserPage = () => {
         <p>Nome: {nome}</p>
         <p>Email: {email}</p>
         <p>Biografia: {biografia}</p>
+        <button onClick={handleNavigatePaginaInicial}>Ir para o feed</button>
       </Container>
 
     </div>
